@@ -1,3 +1,8 @@
+#procedural 
+
+
+
+
 tasks = []
 
 def add_task(title, description):
@@ -12,6 +17,7 @@ def list_tasks():
 def complete_task(index):
     if 0 <= index < len(tasks):
         tasks[index]["completed"] = True
+
 
 # Example usage
 add_task("Buy groceries", "Milk, eggs, bread")

@@ -1,0 +1,108 @@
+Let’s turn your **Task Manager** into a step-by-step **OOP learning roadmap** 🚀
+
+We’ll start simple, then gradually layer in OOP concepts, so you *feel* why OOP is useful.
+
+---
+
+# 🗂 Roadmap: Task Manager in Python (OOP Journey)
+
+---
+
+## **Step 1 – Basic Classes & Encapsulation**
+
+* Create a `Task` class (with title, description, completed flag).
+* Create a `TaskManager` class to store tasks.
+* Encapsulate logic: `Task` knows how to mark itself complete.
+
+✅ You already have this working!
+
+---
+
+## **Step 2 – Add Attributes & Methods**
+
+* Add new fields like **priority** and **due\_date**.
+* Implement methods in `Task`:
+
+  * `is_overdue()` (compares due date with today).
+  * `__str__()` returns readable task info.
+
+👉 You’ll see how adding functionality is cleaner in OOP than in procedural code.
+
+---
+
+## **Step 3 – Inheritance**
+
+* Create subclasses of `Task`:
+
+  * `WorkTask` (maybe add a `project` field).
+  * `PersonalTask` (maybe add a `location` field).
+* Override `__str__()` so each type prints differently.
+
+👉 Learn how inheritance avoids duplication.
+
+---
+
+## **Step 4 – Polymorphism**
+
+* Suppose both `WorkTask` and `PersonalTask` override `remind()`.
+
+  * `WorkTask.remind()` → "Reminder: submit report to boss."
+  * `PersonalTask.remind()` → "Reminder: buy groceries."
+* When you loop over tasks, you just call `task.remind()` and Python decides which version to use.
+
+👉 This is **polymorphism** in action.
+
+---
+
+## **Step 5 – Persistence (Saving & Loading)**
+
+* Add methods in `TaskManager` to:
+
+  * Save tasks to a **JSON file**.
+  * Load tasks back on program start.
+* Decide how to handle subclasses when reloading (e.g., store `"type": "WorkTask"` in JSON).
+
+👉 You’ll practice abstraction and serialization.
+
+---
+
+## **Step 6 – Exceptions & Validation**
+
+* Add error handling in `TaskManager`:
+
+  * Prevent adding tasks with empty titles.
+  * Handle invalid indexes in `complete_task()`.
+  * Raise custom exceptions like `TaskNotFoundError`.
+
+👉 You’ll see how OOP makes error handling more structured.
+
+---
+
+## **Step 7 – User Interface Layer**
+
+* Build a **CLI menu**:
+
+  * `1. Add task`
+  * `2. List tasks`
+  * `3. Complete task`
+  * `4. Save & Exit`
+* Separate UI logic from business logic.
+
+👉 This teaches **separation of concerns**.
+
+---
+
+## **Step 8 – Advanced Features (Optional)**
+
+* Add a `Category` class (many tasks can belong to a category).
+* Add filtering (show only completed, only overdue, etc.).
+* Export to CSV.
+* Add unit tests (`pytest`) to test your classes.
+
+👉 This takes it closer to a **real-world app**.
+
+---
+
+💡 By the end, you’ll have a **mini productivity tool**, built step by step, each stage introducing a new OOP principle.
+
+---
