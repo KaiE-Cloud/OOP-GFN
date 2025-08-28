@@ -5,37 +5,41 @@ from datetime import date, timedelta
 
 class Task:
     def __init__(self, title, description, priority, due_date=None):
-        self.title = title
-        self.description = description
-        self.completed = False
-        self.priority = priority
-        self.status = "✗"
-        if due_date == None: self.due_date = None
-        elif isinstance(due_date, date): self.due_date = due_date
+        self._title = title
+        self._description = description
+        self._completed = False
+        self._priority = priority
+        self._status = "✗"
+        if due_date == None: self._due_date = None
+        elif isinstance(due_date, date): self._due_date = due_date
         else: raise TypeError("due_date must be a date object or None")
 
+    @property
+    def __today(self):
+        return date.today()
+
     def mark_complete(self):
-        self.completed = True
-        self.status = "✓"
+        self._completed = True
+        self._status = "✓"
 
     def is_overdue(self):
-        if self.due_date is None or self.completed == True: return ""
-        elif self.due_date - timedelta(days=3) <= date.today() < self.due_date: return f"Due soon! ({(self.due_date - date.today()).days} days left)"
-        elif date.today() >= self.due_date: return "Overdue!"
+        if self._due_date is None or self._completed == True: return ""
+        elif self._due_date - timedelta(days=3) <= self.__today < self._due_date: return f"Due soon! ({(self._due_date - self.__today).days} days left)"
+        elif self.__today >= self._due_date: return "Overdue!"
         else: return ""
 
     def remind(self):
-        if self.due_date is None or self.completed == True: return ""
-        elif self.due_date - timedelta(days=3) <= date.today() < self.due_date or date.today() >= self.due_date: return f"Reminder: {self.description}"
+        if self._due_date is None or self._completed == True: return ""
+        elif self._due_date - timedelta(days=3) <= self.__today < self._due_date or self.__today >= self._due_date: return f"Reminder: {self._description}"
 
     def __str__(self):
-        return f"Task: {self.title} - Description: {self.description} - Priority: {self.priority} - Due: {self.due_date} [{self.status}] {self.is_overdue()}"
+        return f"Task: {self._title} - Description: {self._description} - Priority: {self._priority} - Due: {self._due_date} [{self._status}] {self.is_overdue()}"
 
 
 class WorkTask(Task):
     def __init__(self, project, title, description, priority, due_date=None):
         super().__init__(title, description, priority, due_date)
-        self.project = project
+        self.__project = project
 
     def remind(self):
         base_reminder = super().remind()
@@ -45,13 +49,13 @@ class WorkTask(Task):
 
     def __str__(self):
         base_str = super().__str__()
-        return base_str.replace("Task:", f"Project: {self.project} - Subtask:")
+        return base_str.replace("Task:", f"Project: {self.__project} - Subtask:")
 
 
 class PersonalTask(Task):
     def __init__(self, title, description, location, priority, due_date=None):
         super().__init__(title, description, priority, due_date)
-        self.location = location
+        self.__location = location
 
     def remind(self):
         base_reminder = super().remind()
@@ -61,7 +65,7 @@ class PersonalTask(Task):
 
     def __str__(self):
         base_str = super().__str__()
-        return base_str.replace("Description:", f"Description: {self.description} - Location: {self.location}")
+        return base_str.replace("Description:", f"Description: {self._description} - Location: {self.__location}")
 
 
 
