@@ -1,0 +1,23 @@
+@startuml TaskManager
+
+class TaskManager {
+    + tasks: list
+    + add_task(task: Task)
+    + list_tasks()
+    + call_reminder()
+    + complete_task(index: int)
+}
+
+class Task {
+    
+}
+
+class WorkTask {
+    
+}
+
+class PersonalTask {
+    
+}
+
+@enduml
