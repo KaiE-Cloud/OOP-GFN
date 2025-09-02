@@ -36,7 +36,7 @@ class Task:
     #method to provide reminders
     def remind(self):
         if self._due_date is None or self._completed == True: return ""
-        elif self._due_date - timedelta(days=3) <= self.__today < self._due_date or self.__today >= self._due_date: return f"Reminder: {self._description}"
+        elif self._due_date - timedelta(days=3) <= self.__today < self._due_date or self.__today >= self._due_date: return f"Reminder: {self._description} – " + self.is_overdue()
 
     #define string representation
     def __str__(self):

@@ -1,6 +1,7 @@
 @startuml TaskManager
 
 class TaskManager {
+    // attributes
     + tasks: list
     + add_task(task: Task)
     + list_tasks()
@@ -9,15 +10,38 @@ class TaskManager {
 }
 
 class Task {
-    
+    // attributes
+    # title: string
+    # description: string
+    # due_date: date
+    # completed: bool
+    # priority: string
+    # status: string
+    // methods
+    + Task(title: string, description: string, due_date: date, completed: bool, priority: string, status: string) {constructor}
+    - today(): date {property, get}
+    + is_overdue(): string
+    + mark_complete()
+    + remind(): string
+    + toString(): string {string representation}
 }
 
 class WorkTask {
-    
+    // attributes
+    - project: string
+    // methods
+    + WorkTask(project: string, title: string, description: string, due_date: date, completed: bool, priority: string, status: string) {constructor}
+    + remind(): string
+    + toString(): string {string representation}
 }
 
 class PersonalTask {
-    
+    // attributes
+    - location: string
+    // methods
+    + PersonalTask(title: string, description: string, location: string, due_date: date, completed: bool, priority: string, status: string) {constructor}
+    + remind(): string
+    + toString(): string {string representation}
 }
 
 @enduml
