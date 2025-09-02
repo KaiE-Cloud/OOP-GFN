@@ -7,13 +7,13 @@ from datetime import date, timedelta
 class Task:
     #initialize instance attributes
     def __init__(self, title, description, priority, due_date=None):
-        self._title = title
+        self.__title = title
         self._description = description
-        self._completed = False
-        self._priority = priority
-        self._status = "✗"
-        if due_date == None: self._due_date = None
-        elif isinstance(due_date, date): self._due_date = due_date
+        self.__completed = False
+        self.__priority = priority
+        self.__status = "✗"
+        if due_date == None: self.__due_date = None
+        elif isinstance(due_date, date): self.__due_date = due_date
         else: raise TypeError("due_date must be a date object or None")
 
     #private property to get today's date
@@ -23,24 +23,24 @@ class Task:
 
     #method to mark task as complete
     def mark_complete(self):
-        self._completed = True
-        self._status = "✓"
+        self.__completed = True
+        self.__status = "✓"
 
     #method to check if task is overdue or due soon
     def is_overdue(self):
-        if self._due_date is None or self._completed == True: return ""
-        elif self._due_date - timedelta(days=3) <= self.__today < self._due_date: return f"Due soon! ({(self._due_date - self.__today).days} days left)"
-        elif self.__today >= self._due_date: return "Overdue!"
+        if self.__due_date is None or self.__completed == True: return ""
+        elif self.__due_date - timedelta(days=3) <= self.__today < self.__due_date: return f"Due soon! ({(self.__due_date - self.__today).days} days left)"
+        elif self.__today >= self.__due_date: return "Overdue!"
         else: return ""
 
     #method to provide reminders
     def remind(self):
-        if self._due_date is None or self._completed == True: return ""
-        elif self._due_date - timedelta(days=3) <= self.__today < self._due_date or self.__today >= self._due_date: return f"Reminder: {self._description} – " + self.is_overdue()
+        if self.__due_date is None or self.__completed == True: return ""
+        elif self.__due_date - timedelta(days=3) <= self.__today < self.__due_date or self.__today >= self.__due_date: return f"Reminder: {self._description} – " + self.is_overdue()
 
     #define string representation
     def __str__(self):
-        return f"Task: {self._title} - Description: {self._description} - Priority: {self._priority} - Due: {self._due_date} [{self._status}] {self.is_overdue()}"
+        return f"Task: {self.__title} - Description: {self._description} - Priority: {self.__priority} - Due: {self.__due_date} [{self.__status}] {self.is_overdue()}"
 
 
 #sub

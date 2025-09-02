@@ -1,0 +1,57 @@
+@startuml TaskManager
+
+class Task {
+    - __title: str
+    - _description: str
+    - __completed: bool
+    - __priority: str
+    - __status: str
+    - __due_date: date | None
+    + __init__(title, description, priority, due_date=None)
+    + mark_complete()
+    + is_overdue(): str
+    + remind(): str
+    + __str__(): str
+    - __today(): date
+}
+
+class WorkTask {
+    - __project: str
+    + __init__(project, title, description, priority, due_date=None)
+    + remind(): str
+    + __str__(): str
+}
+
+class PersonalTask {
+    - __location: str
+    + __init__(title, description, location, priority, due_date=None)
+    + remind(): str
+    + __str__(): str
+}
+
+class TaskManager {
+    - tasks: list
+    + __init__()
+    + add_task(task)
+    + list_tasks()
+    + call_reminder()
+    + complete_task(index)
+}
+
+' Vererbungen
+WorkTask --|> Task
+PersonalTask --|> Task
+
+' Aggregation: TaskManager verwaltet alle Task-Typen (leere Raute)
+TaskManager "1" o-- "0..*" Task : manages
+TaskManager "1" o-- "0..*" WorkTask : manages
+TaskManager "1" o-- "0..*" PersonalTask : manages
+
+' Gruppierung der Task-Klassen
+'package "Tasks" {
+'    Task
+'    WorkTask
+'    PersonalTask
+'}
+
+@enduml

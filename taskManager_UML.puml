@@ -11,12 +11,12 @@ class TaskManager {
 
 class Task {
     // attributes
-    # title: string
+    - title: string
     # description: string
-    # due_date: date
-    # completed: bool
-    # priority: string
-    # status: string
+    - due_date: date
+    - completed: bool
+    - priority: string
+    - status: string
     // methods
     + Task(title: string, description: string, due_date: date, completed: bool, priority: string, status: string) {constructor}
     - today(): date {property, get}
