@@ -1,0 +1,23 @@
+Prinzipien der OO (Objektorientierung)
+
+Abstraktion:
+Fasst wesentliche Eigenschaften (Attribute) und Verhaltensweisen (Methoden) von Objekten in einer Klasse (Bauplan) zusammen
+
+Datenkapselung:
+Kapselt die Attribute (private ,-) Zugriff nur über öffentliche Methoden (public ,+)
+
+Vererbung:
+Beschreibt eine unauflösliche Beziehung zw. einer Basisklasse (Superklasse) und einer abgeleiteten Klasse (Subklasse) und gibt Attribute und Methoden an die Subklasse weiter
+
+Polymorphie (Vielgestaltigkeit): Methoden mit gleicher Signatur (Kopfzeile), aber unterschiedlichen Methodenkörper
+Late Bindung (dynamisches Binden): spätes Binden, Methoden werden zur Laufzeit (bei der Ausführung) zusammen gebunden
+Statisches Binden: Methoden werden während des Übersetzungsvorganges zusammengezogen
+
+
+Überladene Methode:
+
+Override:
+
+Konstruktor:
+
+Signatur:

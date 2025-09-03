@@ -84,7 +84,7 @@ class PersonalTask(Task):
 
 
 #manager for functionality
-class TaskManager:
+class TaskManager:                                  # classify all members as static
     #initialize instance attributes
     def __init__(self):
         self.tasks = []
