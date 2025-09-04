@@ -84,35 +84,31 @@ class PersonalTask(Task):
 
 
 #manager for functionality
-class TaskManager:                                  # classify all members as static
-    #initialize instance attributes
-    def __init__(self):
-        self.tasks = []
+class TaskManager:
+    #set static attributes
+    tasks = []
 
-    #method to add task
-    def add_task(self, task):
-        self.tasks.append(task)
+    #set static methods
+    def add_task(task):
+        TaskManager.tasks.append(task)
 
-    #method to list tasks
-    def list_tasks(self):
-        for i, task in enumerate(self.tasks, 1):
+    def list_tasks():
+        for i, task in enumerate(TaskManager.tasks, 1):
             print(f"{i}. {task}")
 
-    #method to call reminders
-    def call_reminder(self):
-        for i, task in enumerate(self.tasks, 0):
+    def call_reminder():
+        for i, task in enumerate(TaskManager.tasks, 0):
             if task.remind(): print(task.remind())
 
-    #method to complete task
-    def complete_task(self, index):
-        if 0 <= index < len(self.tasks):
-            self.tasks[index].mark_complete()
+    def complete_task(index):
+        if 0 <= index < len(TaskManager.tasks):
+            TaskManager.tasks[index].mark_complete()
 
 
 
 
 #main entry point
-manager = TaskManager()
+manager = TaskManager #truly static
 manager.add_task(Task("Buy groceries", "Milk, eggs, bread", "Medium", date(2025, 8, 20)))
 manager.add_task(Task("Study", "Read Python OOP chapter", "High", date(2025, 8, 24)))
 manager.add_task(Task("Exercise", "Yoga with Anna", "Medium", date(2025, 8, 19)))
